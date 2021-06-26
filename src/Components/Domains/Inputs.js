@@ -9,9 +9,9 @@ import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import TextField from "@material-ui/core/TextField";
 
-function Configuration({ configs, dispatch }) {
+function Inputs({ inputs, dispatch }) {
   const renderItems = () => {
-    return configs.map(({ domain, priority }, index) => (
+    return inputs.map(({ domain, priority }, index) => (
       <TableRow key={index}>
         <TableCell align="left">
           <TextField
@@ -25,18 +25,6 @@ function Configuration({ configs, dispatch }) {
               })
             }
           />
-        </TableCell>
-        <TableCell align="center">
-          <Styled.PriorityItem>
-            <Styled.AddButton
-              onClick={() => dispatch({ type: "increment", payload: index })}
-            />
-            {priority}
-            <Styled.RemoveButton
-              disabled={priority === 1}
-              onClick={() => dispatch({ type: "decrement", payload: index })}
-            />
-          </Styled.PriorityItem>
         </TableCell>
         <TableCell align="right">
           {!!index && (
@@ -55,8 +43,7 @@ function Configuration({ configs, dispatch }) {
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="left">Configuration</TableCell>
-              <TableCell align="center">Priority</TableCell>
+              <TableCell align="left">Domain/IP</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>{renderItems()}</TableBody>
@@ -76,4 +63,4 @@ function Configuration({ configs, dispatch }) {
   );
 }
 
-export default Configuration;
+export default Inputs;

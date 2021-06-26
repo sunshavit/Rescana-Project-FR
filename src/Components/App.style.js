@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+export const AppContainer = styled.div`
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -9,20 +16,12 @@ export const Container = styled.div`
   height: 100vh;
 `;
 
-export const Headr = styled.div`
-  width: 100%;
-  text-align: center;
-`;
-
 export const Card = styled.div`
   width: 40%;
-  height: 30%;
+  height: 70%;
   padding: 20px;
-  background: #f2f2f2;
+  background: #ffffff;
   overflow: payload;
   border-radius: 20px;
   box-shadow: 0 0 7px 2px #d0d0d0;
-  &.output {
-    width: 100%;
-  }
 `;
