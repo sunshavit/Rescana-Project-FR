@@ -69,3 +69,10 @@ export const RemoveItem = styled(DeleteIcon)`
     transition: all 0.2s;
   }
 `;
+
+export const Floating = styled.div`
+  align-self: flex-end;
+  .MuiSvgIcon-root {
+    color: white;
+  }
+`;

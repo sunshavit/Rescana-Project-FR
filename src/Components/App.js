@@ -9,6 +9,7 @@ import axios from "axios";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import Output from "./Domains/Output";
+import Footer from "./common/Footer";
 
 function App() {
   const [configs, dispatch] = useReducer(reducer, [
@@ -16,6 +17,7 @@ function App() {
   ]);
   const [inputs, dispatchInputs] = useReducer(reducer, [{ domain: "" }]);
   const [error, setError] = useState({ isError: false, message: "" });
+  const [isLoading, setIsLoading] = useState(false);
 
   const [output, setOutput] = useState([]);
 
@@ -29,6 +31,7 @@ function App() {
 
   const handleSubmit = async () => {
     try {
+      setIsLoading(true);
       const res = await axios.post(`${process.env.REACT_APP_API_URL}/api`, {
         input: inputs.map((input) => input.domain),
         config: configs,
@@ -36,28 +39,39 @@ function App() {
       setOutput(res.data);
     } catch (err) {
       setError({ isError: true, message: err.response.data });
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <Styled.AppContainer>
       <Header />
+      <Styled.HorizontalRule />
       <Styled.Container>
-        <Styled.Card>
+        <Styled.Card direction={"left"}>
           <Configuration configs={configs} dispatch={dispatch} />
         </Styled.Card>
-        <Button variant="contained" color="primary" onClick={handleSubmit}>
-          Send
-        </Button>
-        <Styled.Card>
+        <Styled.LoadingConatiner>
+          <Styled.Loader isLoading={isLoading} />
+          <Button variant="contained" color="primary" onClick={handleSubmit}>
+            Send
+          </Button>
+        </Styled.LoadingConatiner>
+        <Styled.Card direction={"right"}>
           <Inputs inputs={inputs} dispatch={dispatchInputs} />
         </Styled.Card>
       </Styled.Container>
       {!!output.length && (
-        <Styled.Card>
-          <Output data={output} />
-        </Styled.Card>
+        <>
+          <h2>Results</h2>
+          <Styled.Card>
+            <Output data={output} />
+          </Styled.Card>
+        </>
       )}
+      <Styled.HorizontalRule />
+      <Footer />
       <Snackbar
         open={error.isError}
         autoHideDuration={6000}

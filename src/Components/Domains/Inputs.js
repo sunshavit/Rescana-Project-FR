@@ -15,8 +15,7 @@ function Inputs({ inputs, dispatch }) {
       <TableRow key={index}>
         <TableCell align="left">
           <TextField
-            id="outlined-basic"
-            label="Outlined"
+            label="Enter a valid domain"
             variant="outlined"
             onChange={(e) =>
               dispatch({
@@ -49,16 +48,18 @@ function Inputs({ inputs, dispatch }) {
           <TableBody>{renderItems()}</TableBody>
         </Table>
       </TableContainer>
-      <Fab size="small" color="primary" aria-label="add">
-        <AddIcon
-          onClick={() =>
-            dispatch({
-              type: "add_item",
-              payload: { domain: "", priority: 1 },
-            })
-          }
-        />
-      </Fab>
+      <Styled.Floating>
+        <Fab size="small" color="primary" aria-label="add">
+          <AddIcon
+            onClick={() =>
+              dispatch({
+                type: "add_item",
+                payload: { domain: "", priority: 1 },
+              })
+            }
+          />
+        </Fab>
+      </Styled.Floating>
     </Styled.DomainsContainer>
   );
 }

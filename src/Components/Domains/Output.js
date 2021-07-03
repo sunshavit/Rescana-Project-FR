@@ -17,18 +17,20 @@ function Output({ data }) {
   };
 
   return (
-    <TableContainer>
-      <Table aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell align="left"></TableCell>
-            <TableCell align="center">IP</TableCell>
-            <TableCell align="center">Domain</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>{renderItems()}</TableBody>
-      </Table>
-    </TableContainer>
+    <div>
+      <TableContainer>
+        <Table aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell align="left"></TableCell>
+              <TableCell align="center">IP</TableCell>
+              <TableCell align="center">Domain</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>{renderItems()}</TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   );
 }
 

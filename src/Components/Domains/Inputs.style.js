@@ -25,6 +25,9 @@ export const DomainsContainer = styled.div`
   .MuiTableContainer-root {
     height: 80%;
   }
+  &&.MuiFab-primary {
+    color: white;
+  }
 `;
 
 export const PriorityItem = styled.div`
@@ -67,5 +70,11 @@ export const RemoveItem = styled(DeleteIcon)`
   &:hover {
     color: red;
     transition: all 0.2s;
+  }
+`;
+export const Floating = styled.div`
+  align-self: flex-end;
+  .MuiSvgIcon-root {
+    color: white;
   }
 `;
